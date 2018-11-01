@@ -15,7 +15,7 @@ namespace RecipeDatabase_OOP
 
         public Category()
         {
-
+            Recipes = new List<Recipe>();
         }
 
         public Category(int categoryID, string name)
@@ -41,9 +41,20 @@ namespace RecipeDatabase_OOP
                 categories.Add(category);
             }
 
-              
+            return categories;  
         }
 
+        public Category FindCategory(int id)
+        {
+            List <Category> categories = GetCategories();
+
+            Category query = (from c in categories
+                        where c.CategoryID == id
+                        select c).FirstOrDefault();
+
+            return query;
+
+        }
     }
 }
 

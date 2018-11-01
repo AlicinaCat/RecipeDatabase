@@ -13,11 +13,11 @@ namespace RecipeDatabase_OOP
         public string Title { get; set; }
         public string Description { get; set; }
         public List<Ingredient> Ingredients { get; set; }
-        public int CategoryID { get; set; }
+        public Category Category { get; set; }
 
         public Recipe()
         {
-
+            Ingredients = new List<Ingredient>();
         }
 
         public Recipe(int recipeID, string title, string description, Category category)
@@ -26,7 +26,6 @@ namespace RecipeDatabase_OOP
             Title = title;
             Description = description;
             Ingredients = new List<Ingredient>();
-            //Category = category;
         }
 
         public List<Recipe> GetRecipes()
@@ -42,33 +41,38 @@ namespace RecipeDatabase_OOP
                 recipe.RecipeID = (int)row.ItemArray[0];
                 recipe.Title = row.ItemArray[1].ToString();
                 recipe.Description = row.ItemArray[2].ToString();
-                recipe.CategoryID = (int)row.ItemArray[3];
+
+                int categoryID = (int)row.ItemArray[3];
+
+                Category category = new Category();
+                recipe.Category = category.FindCategory(categoryID);
+                recipe.Category.Recipes.Add(recipe);
+                recipe.Ingredients = recipe.GetListOfIngredients();
 
                 recipes.Add(recipe);
             }
 
             return recipes;
         }
+
+        public List<Ingredient> GetListOfIngredients()
+        {
+            List<Ingredient> ingredientList = new List<Ingredient>();
+
+            DBManager db = new DBManager("SELECT IngredientID FROM IngredientList WHERE RecipeID = " + RecipeID);
+            DataTable table = db.ExecuteSQL();
+
+            foreach (DataRow row in table.Rows)
+            {
+                int id = (int)row.ItemArray[0];
+
+                Ingredient ingredient = new Ingredient();
+                ingredient.FindIngredient(id);
+
+                ingredientList.Add(ingredient);
+            }
+
+            return ingredientList;
+        }
     }
 }
-
-//public List<Kund> GetAllCustomers()
-//{
-//    List<Kund> kunder = new List<Kund>();
-
-//    DBManager db = new DBManager("SELECT KundID, Namn, adress,email FROM Kund");
-//    DataTable tbl = db.ExecuteSQL();
-
-//    //Loopar igenom alla rader i svaret
-//    foreach (DataRow row in tbl.Rows)
-//    {
-//        Kund kund = new Kund();
-//        kund.KundID = (int)row.ItemArray[0];
-//        kund.Namn = row.ItemArray[1].ToString();
-//        kund.Adress = row.ItemArray[2].ToString();
-//        kund.Email = row.ItemArray[3].ToString();
-
-//        kunder.Add(kund);
-//    }
-//    return kunder;
-//}
