@@ -67,7 +67,7 @@ namespace RecipeDatabase_OOP
                 int id = (int)row.ItemArray[0];
 
                 Ingredient ingredient = new Ingredient();
-                ingredient.FindIngredient(id);
+                ingredient = ingredient.FindIngredient(id);
 
                 ingredientList.Add(ingredient);
             }

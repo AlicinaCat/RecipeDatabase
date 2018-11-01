@@ -34,15 +34,20 @@ namespace RecipeDatabase_OOP
         {
             int id = (int)lstRecipes.SelectedValue;
 
-            var query = (from r in Recipes
+            var recipe = (from r in Recipes
                          where r.RecipeID == id
                          select r).SingleOrDefault();
 
-            txtDescription.Text = query.Description;
-            txtCategory.Text = query.Category.Name;
+            txtTitle.Text = recipe.Title;
+            txtDescription.Text = recipe.Description;
+            txtCategory.Text = recipe.Category.Name;
 
             lstIngredients.DisplayMember = "Name";
-            lstIngredients.DataSource = query.Ingredients;
+            lstIngredients.DataSource = recipe.Ingredients;
+            //foreach (var item in query.Ingredients)
+            //{
+            //    Console.WriteLine("found some ingredient: " + item.Name);
+            //}
 
         }
 
