@@ -125,6 +125,7 @@
             this.cmdNew.TabIndex = 22;
             this.cmdNew.Text = "New";
             this.cmdNew.UseVisualStyleBackColor = true;
+            this.cmdNew.Click += new System.EventHandler(this.cmdNew_Click);
             // 
             // lstIngredients
             // 

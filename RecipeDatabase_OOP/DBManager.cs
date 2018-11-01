@@ -38,6 +38,21 @@ namespace RecipeDatabase_OOP
             return table;
         }
 
+        public int ExecuteSQLScalar()
+        {
+            int result;
+
+            using (Connection)
+            {
+                Connection.Open();
+
+                Command = new SqlCommand(Query, Connection);
+                result = Convert.ToInt32(Command.ExecuteScalar());
+            }
+
+            return result;
+        }
+
         public void ExecuteSQLNoReturn()
         {
             using (Connection)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstCategory = new System.Windows.Forms.ListBox();
+            this.lstCategories = new System.Windows.Forms.ListBox();
             this.cmdNew = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,13 +42,14 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // lstCategory
+            // lstCategories
             // 
-            this.lstCategory.FormattingEnabled = true;
-            this.lstCategory.Location = new System.Drawing.Point(49, 168);
-            this.lstCategory.Name = "lstCategory";
-            this.lstCategory.Size = new System.Drawing.Size(289, 56);
-            this.lstCategory.TabIndex = 24;
+            this.lstCategories.FormattingEnabled = true;
+            this.lstCategories.Location = new System.Drawing.Point(49, 168);
+            this.lstCategories.Name = "lstCategories";
+            this.lstCategories.Size = new System.Drawing.Size(289, 56);
+            this.lstCategories.TabIndex = 24;
+            this.lstCategories.SelectedIndexChanged += new System.EventHandler(this.lstCategory_SelectedIndexChanged);
             // 
             // cmdNew
             // 
@@ -67,6 +68,7 @@
             this.cmdAdd.TabIndex = 22;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // label4
             // 
@@ -85,6 +87,7 @@
             this.cmdCancel.TabIndex = 20;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // cmdSave
             // 
@@ -94,6 +97,7 @@
             this.cmdSave.TabIndex = 19;
             this.cmdSave.Text = "Save";
             this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // lstIngredients
             // 
@@ -150,7 +154,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 444);
-            this.Controls.Add(this.lstCategory);
+            this.Controls.Add(this.lstCategories);
             this.Controls.Add(this.cmdNew);
             this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.label4);
@@ -171,7 +175,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lstCategory;
+        private System.Windows.Forms.ListBox lstCategories;
         private System.Windows.Forms.Button cmdNew;
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Label label4;

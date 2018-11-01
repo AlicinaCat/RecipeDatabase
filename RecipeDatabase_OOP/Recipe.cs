@@ -20,14 +20,6 @@ namespace RecipeDatabase_OOP
             Ingredients = new List<Ingredient>();
         }
 
-        public Recipe(int recipeID, string title, string description, Category category)
-        {
-            RecipeID = recipeID;
-            Title = title;
-            Description = description;
-            Ingredients = new List<Ingredient>();
-        }
-
         public List<Recipe> GetRecipes()
         {
             List<Recipe> recipes = new List<Recipe>();
@@ -73,6 +65,28 @@ namespace RecipeDatabase_OOP
             }
 
             return ingredientList;
+        }
+
+        public void CreateNewRecipe(string title, string description, int categoryID)
+        {
+            DBManager db = new DBManager($"DECLARE @INSERTED TABLE(RecipeID int); INSERT INTO Recipe(Title, Description, CategoryID) " +
+                                        $"OUTPUT INSERTED.RecipeId INTO @INSERTED VALUES('{title}', " +
+                                        $"'{description}', {categoryID}); SELECT * FROM @INSERTED");
+            int newRecipeID = db.ExecuteSQLScalar();
+            CreateNewIngredientList(newRecipeID);
+
+        }
+
+        private void CreateNewIngredientList(int recipeID)
+        {
+
+            foreach (var item in Ingredients)
+            {
+                DBManager db = new DBManager($"INSERT INTO IngredientList(RecipeID, IngredientID) VALUES ({recipeID}, " +
+                                             $"{item.IngredientID})");
+
+                db.ExecuteSQLNoReturn();
+            }
         }
     }
 }

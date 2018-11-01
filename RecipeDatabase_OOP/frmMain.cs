@@ -86,5 +86,12 @@ namespace RecipeDatabase_OOP
             //lstRecipes.ValueMember = "RecipeID";
             //lstRecipes.DataSource = Recipes;
         }
+
+        private void cmdNew_Click(object sender, EventArgs e)
+        {
+            frmNew newRecipe = new frmNew();
+            newRecipe.Show();
+            
+        }
     }
 }
