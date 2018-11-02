@@ -72,6 +72,8 @@ namespace RecipeDatabase_OOP
 
             Recipe.Ingredients.Add(query);
 
+            lstIngredientList.Items.Add(query.Name);
+
         }
 
         private void cmdCancel_Click(object sender, EventArgs e)

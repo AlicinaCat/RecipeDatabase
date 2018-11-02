@@ -30,6 +30,15 @@ namespace RecipeDatabase_OOP
             int index = lstCategories.FindString(catName);
             lstCategories.SelectedIndex = index;
 
+            //lstIngredientList.DisplayMember = "Name";
+            //lstIngredientList.ValueMember = "IngredientID";
+            //lstIngredientList.DataSource = Recipe.Ingredients;
+
+            foreach (var item in Recipe.Ingredients)
+            {
+                lstIngredientList.Items.Add(item.Name);
+            }
+
         }
 
         private void LoadCategories()
@@ -81,6 +90,8 @@ namespace RecipeDatabase_OOP
 
             Recipe.Ingredients.Add(query);
             Recipe.UpdateIngredientList(Recipe.RecipeID, query.IngredientID);
+
+            lstIngredientList.Items.Add(query.Name);
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -88,6 +99,11 @@ namespace RecipeDatabase_OOP
             Recipe.UpdateRecipe(txtTitle.Text, txtDescription.Text, (int)lstCategories.SelectedValue);
             MessageBox.Show("Recipe updated!");
             Close();
+        }
+
+        private void lstIngredientList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

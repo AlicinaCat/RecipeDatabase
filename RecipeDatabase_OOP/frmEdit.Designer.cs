@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.RichTextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
+            this.lstIngredientList = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lstCategories
@@ -47,13 +48,13 @@
             this.lstCategories.FormattingEnabled = true;
             this.lstCategories.Location = new System.Drawing.Point(46, 167);
             this.lstCategories.Name = "lstCategories";
-            this.lstCategories.Size = new System.Drawing.Size(289, 56);
+            this.lstCategories.Size = new System.Drawing.Size(470, 56);
             this.lstCategories.TabIndex = 36;
             this.lstCategories.SelectedIndexChanged += new System.EventHandler(this.lstCategories_SelectedIndexChanged);
             // 
             // cmdNew
             // 
-            this.cmdNew.Location = new System.Drawing.Point(276, 297);
+            this.cmdNew.Location = new System.Drawing.Point(243, 296);
             this.cmdNew.Name = "cmdNew";
             this.cmdNew.Size = new System.Drawing.Size(75, 23);
             this.cmdNew.TabIndex = 35;
@@ -62,7 +63,7 @@
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(276, 268);
+            this.cmdAdd.Location = new System.Drawing.Point(243, 267);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(75, 23);
             this.cmdAdd.TabIndex = 34;
@@ -81,7 +82,7 @@
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(220, 355);
+            this.cmdCancel.Location = new System.Drawing.Point(304, 356);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(118, 45);
             this.cmdCancel.TabIndex = 32;
@@ -91,7 +92,7 @@
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(61, 355);
+            this.cmdSave.Location = new System.Drawing.Point(145, 356);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(118, 45);
             this.cmdSave.TabIndex = 31;
@@ -104,7 +105,7 @@
             this.lstIngredients.FormattingEnabled = true;
             this.lstIngredients.Location = new System.Drawing.Point(46, 255);
             this.lstIngredients.Name = "lstIngredients";
-            this.lstIngredients.Size = new System.Drawing.Size(214, 82);
+            this.lstIngredients.Size = new System.Drawing.Size(181, 82);
             this.lstIngredients.TabIndex = 30;
             // 
             // label3
@@ -138,7 +139,7 @@
             // 
             this.txtDescription.Location = new System.Drawing.Point(49, 79);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(287, 64);
+            this.txtDescription.Size = new System.Drawing.Size(468, 64);
             this.txtDescription.TabIndex = 26;
             this.txtDescription.Text = " ";
             // 
@@ -146,14 +147,24 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(47, 38);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(289, 20);
+            this.txtTitle.Size = new System.Drawing.Size(470, 20);
             this.txtTitle.TabIndex = 25;
+            // 
+            // lstIngredientList
+            // 
+            this.lstIngredientList.FormattingEnabled = true;
+            this.lstIngredientList.Location = new System.Drawing.Point(335, 255);
+            this.lstIngredientList.Name = "lstIngredientList";
+            this.lstIngredientList.Size = new System.Drawing.Size(181, 82);
+            this.lstIngredientList.TabIndex = 37;
+            this.lstIngredientList.SelectedIndexChanged += new System.EventHandler(this.lstIngredientList_SelectedIndexChanged);
             // 
             // frmEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(387, 469);
+            this.ClientSize = new System.Drawing.Size(578, 467);
+            this.Controls.Add(this.lstIngredientList);
             this.Controls.Add(this.lstCategories);
             this.Controls.Add(this.cmdNew);
             this.Controls.Add(this.cmdAdd);
@@ -188,5 +199,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox txtDescription;
         private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.ListBox lstIngredientList;
     }
 }
