@@ -102,5 +102,12 @@ namespace RecipeDatabase_OOP
             frmEdit editRecipe = new frmEdit(recipe);
             editRecipe.Show();
         }
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            Recipe recipe = FindRecipe();
+            frmDelete deleteRecipe = new frmDelete(recipe);
+            deleteRecipe.Show();
+        }
     }
 }

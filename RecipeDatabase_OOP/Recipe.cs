@@ -106,5 +106,19 @@ namespace RecipeDatabase_OOP
             //CreateNewIngredientList(newRecipeID);
 
         }
+
+        public void DeleteRecipe()
+        { 
+            DeleteIngredientList();
+            
+            DBManager db = new DBManager($"DELETE FROM Recipe WHERE RecipeID = {RecipeID}");
+            db.ExecuteSQLNoReturn();
+        }
+
+        private void DeleteIngredientList()
+        {
+            DBManager db = new DBManager($"DELETE FROM IngredientList WHERE RecipeID = {RecipeID}");
+            db.ExecuteSQLNoReturn();
+        }
     }
 }
