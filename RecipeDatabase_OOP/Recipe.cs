@@ -69,7 +69,8 @@ namespace RecipeDatabase_OOP
 
         public void CreateNewRecipe(string title, string description, int categoryID)
         {
-            DBManager db = new DBManager($"DECLARE @INSERTED TABLE(RecipeID int); INSERT INTO Recipe(Title, Description, CategoryID) " +
+            DBManager db = new DBManager($"DECLARE @INSERTED TABLE(RecipeID int); INSERT INTO " +
+                                        $"Recipe(Title, Description, CategoryID) " +
                                         $"OUTPUT INSERTED.RecipeId INTO @INSERTED VALUES('{title}', " +
                                         $"'{description}', {categoryID}); SELECT * FROM @INSERTED");
             int newRecipeID = db.ExecuteSQLScalar();
@@ -79,7 +80,6 @@ namespace RecipeDatabase_OOP
 
         private void CreateNewIngredientList(int recipeID)
         {
-
             foreach (var item in Ingredients)
             {
                 DBManager db = new DBManager($"INSERT INTO IngredientList(RecipeID, IngredientID) VALUES ({recipeID}, " +
@@ -87,6 +87,24 @@ namespace RecipeDatabase_OOP
 
                 db.ExecuteSQLNoReturn();
             }
+        }
+
+        public void UpdateIngredientList(int recipeID, int ingredientID)
+        {
+            DBManager db = new DBManager($"INSERT INTO IngredientList(RecipeID, IngredientID) VALUES ({recipeID}, " +
+                                         $"{ingredientID})");
+
+            db.ExecuteSQLNoReturn();
+        }
+
+        public void UpdateRecipe(string title, string description, int categoryID)
+        {
+            DBManager db = new DBManager($"UPDATE Recipe SET Title = '{title}', Description = '{description}', " +
+                $"CategoryID = {categoryID} WHERE RecipeID = {RecipeID}");
+
+            db.ExecuteSQLNoReturn();
+            //CreateNewIngredientList(newRecipeID);
+
         }
     }
 }

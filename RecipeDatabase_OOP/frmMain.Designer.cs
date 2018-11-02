@@ -35,7 +35,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmdSearch = new System.Windows.Forms.Button();
             this.cmdDelete = new System.Windows.Forms.Button();
-            this.cmdUpdate = new System.Windows.Forms.Button();
             this.cmdNew = new System.Windows.Forms.Button();
             this.lstIngredients = new System.Windows.Forms.ListBox();
             this.txtCategory = new System.Windows.Forms.TextBox();
@@ -43,6 +42,7 @@
             this.lstRecipes = new System.Windows.Forms.ListBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cmdEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtDescription
@@ -108,15 +108,6 @@
             this.cmdDelete.Text = "Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
             // 
-            // cmdUpdate
-            // 
-            this.cmdUpdate.Location = new System.Drawing.Point(334, 579);
-            this.cmdUpdate.Name = "cmdUpdate";
-            this.cmdUpdate.Size = new System.Drawing.Size(186, 50);
-            this.cmdUpdate.TabIndex = 23;
-            this.cmdUpdate.Text = "Update";
-            this.cmdUpdate.UseVisualStyleBackColor = true;
-            // 
             // cmdNew
             // 
             this.cmdNew.Location = new System.Drawing.Point(92, 579);
@@ -174,11 +165,22 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Search name or category";
             // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(331, 579);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(186, 50);
+            this.cmdEdit.TabIndex = 31;
+            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 680);
+            this.Controls.Add(this.cmdEdit);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -186,7 +188,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmdSearch);
             this.Controls.Add(this.cmdDelete);
-            this.Controls.Add(this.cmdUpdate);
             this.Controls.Add(this.cmdNew);
             this.Controls.Add(this.lstIngredients);
             this.Controls.Add(this.txtCategory);
@@ -211,7 +212,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button cmdSearch;
         private System.Windows.Forms.Button cmdDelete;
-        private System.Windows.Forms.Button cmdUpdate;
         private System.Windows.Forms.Button cmdNew;
         private System.Windows.Forms.ListBox lstIngredients;
         private System.Windows.Forms.TextBox txtCategory;
@@ -219,6 +219,7 @@
         private System.Windows.Forms.ListBox lstRecipes;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cmdEdit;
     }
 }
 

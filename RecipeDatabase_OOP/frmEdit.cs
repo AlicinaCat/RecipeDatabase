@@ -10,31 +10,25 @@ using System.Windows.Forms;
 
 namespace RecipeDatabase_OOP
 {
-    public partial class frmNew : Form
+    public partial class frmEdit : Form
     {
-        public List<Ingredient> IngredientList { get; set; }
         public Recipe Recipe { get; set; }
 
-        public frmNew()
+        public frmEdit(Recipe recipe)
         {
             InitializeComponent();
 
+            Recipe = recipe;
+
+            txtTitle.Text = Recipe.Title;
+            txtDescription.Text = Recipe.Description;
+
             LoadCategories();
             LoadIngredients();
-            //IngredientList = new List<Ingredient>();
-            Recipe = new Recipe();
-            
-        }
 
-        private void cmdSave_Click(object sender, EventArgs e)
-        {
-            Recipe.CreateNewRecipe(txtTitle.Text, txtDescription.Text, (int)lstCategories.SelectedValue);
-            MessageBox.Show("Recipe saved!");
-            this.Close();
-        }
-
-        private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            string catName = Recipe.Category.Name;
+            int index = lstCategories.FindString(catName);
+            lstCategories.SelectedIndex = index;
 
         }
 
@@ -60,6 +54,21 @@ namespace RecipeDatabase_OOP
             lstIngredients.DataSource = ingredients;
         }
 
+        private void frmEdit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void lstCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void cmdAdd_Click(object sender, EventArgs e)
         {
             List<Ingredient> ingredients = new List<Ingredient>();
@@ -71,22 +80,14 @@ namespace RecipeDatabase_OOP
                          select i).SingleOrDefault();
 
             Recipe.Ingredients.Add(query);
-
+            Recipe.UpdateIngredientList(Recipe.RecipeID, query.IngredientID);
         }
 
-        private void cmdCancel_Click(object sender, EventArgs e)
+        private void cmdSave_Click(object sender, EventArgs e)
         {
+            Recipe.UpdateRecipe(txtTitle.Text, txtDescription.Text, (int)lstCategories.SelectedValue);
+            MessageBox.Show("Recipe updated!");
             Close();
-        }
-
-        private void frmNew_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lstIngredients_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

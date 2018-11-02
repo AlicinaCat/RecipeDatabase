@@ -44,10 +44,6 @@ namespace RecipeDatabase_OOP
 
             lstIngredients.DisplayMember = "Name";
             lstIngredients.DataSource = recipe.Ingredients;
-            //foreach (var item in query.Ingredients)
-            //{
-            //    Console.WriteLine("found some ingredient: " + item.Name);
-            //}
 
         }
 
@@ -81,10 +77,6 @@ namespace RecipeDatabase_OOP
             Categories = new List<Category>();
             Category category = new Category();
             Categories = category.GetCategories();
-
-            //lstRecipes.DisplayMember = "Title";
-            //lstRecipes.ValueMember = "RecipeID";
-            //lstRecipes.DataSource = Recipes;
         }
 
         private void cmdNew_Click(object sender, EventArgs e)
@@ -92,6 +84,23 @@ namespace RecipeDatabase_OOP
             frmNew newRecipe = new frmNew();
             newRecipe.Show();
             
+        }
+
+        private Recipe FindRecipe()
+        {
+            int id = (int)lstRecipes.SelectedValue;
+
+            var recipe = (from r in Recipes
+                          where r.RecipeID == id
+                          select r).SingleOrDefault();
+            return recipe;
+        }
+
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+            Recipe recipe = FindRecipe();
+            frmEdit editRecipe = new frmEdit(recipe);
+            editRecipe.Show();
         }
     }
 }
