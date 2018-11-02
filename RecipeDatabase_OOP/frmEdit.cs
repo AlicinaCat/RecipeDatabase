@@ -99,6 +99,7 @@ namespace RecipeDatabase_OOP
             Recipe.UpdateRecipe(txtTitle.Text, txtDescription.Text, (int)lstCategories.SelectedValue);
             MessageBox.Show("Recipe updated!");
             Close();
+            Application.Restart();
         }
 
         private void lstIngredientList_SelectedIndexChanged(object sender, EventArgs e)

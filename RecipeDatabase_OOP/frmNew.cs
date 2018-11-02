@@ -30,7 +30,8 @@ namespace RecipeDatabase_OOP
         {
             Recipe.CreateNewRecipe(txtTitle.Text, txtDescription.Text, (int)lstCategories.SelectedValue);
             MessageBox.Show("Recipe saved!");
-            this.Close();
+            Close();
+            Application.Restart();
         }
 
         private void lstCategory_SelectedIndexChanged(object sender, EventArgs e)

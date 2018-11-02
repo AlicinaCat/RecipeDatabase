@@ -38,6 +38,7 @@ namespace RecipeDatabase_OOP
 
             Recipe.DeleteRecipe();
             Close();
+            Application.Restart();
         }
     }
 }
